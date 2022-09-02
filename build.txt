@@ -1,0 +1,4 @@
+displayName = NoDebuff
+author = NgLam2911
+version = 0.3
+modReferences = CalamityMod@2.0.1.1
