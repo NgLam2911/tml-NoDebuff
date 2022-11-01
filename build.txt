@@ -1,4 +1,4 @@
 displayName = NoDebuff
 author = NgLam2911
-version = 0.3
-modReferences = CalamityMod@2.0.1.1
+version = 0.5.2
+modReferences = CalamityMod@2.0.1.3

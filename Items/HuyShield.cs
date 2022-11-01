@@ -25,7 +25,7 @@ public class HuyShield : ModItem {
         Item.defense = 100;
     }
 
-    public override void UpdateEquip(Player player) {
+    public override void UpdateAccessory(Player player, bool hideVisual) {
         player.NoDebuff().HuyShield = true;
         player.noFallDmg = true;
         player.noKnockback = true;
@@ -60,20 +60,16 @@ public class HuyShield : ModItem {
         player.buffImmune[ModContent.BuffType<WitherDebuff>()] = true;
     }
 
-    public override bool CanEquipAccessory(Player player, int slot, bool modded) {
-        return !player.NoDebuff().HuyShield;
-    }
-
     public override void AddRecipes() {
         Recipe recipe = CreateRecipe();
         recipe.AddIngredient(ItemID.AnkhShield);
-        recipe.AddIngredient(ItemID.HallowedBar, 100);
-        recipe.AddIngredient(ItemID.LunarBar, 100);
-        recipe.AddIngredient(ModContent.ItemType<UelibloomBar>(), 100);
-        recipe.AddIngredient(ModContent.ItemType<AstralBar>(), 100);
-        recipe.AddIngredient(ModContent.ItemType<CoreofCalamity>(), 50);
-        recipe.AddIngredient(ModContent.ItemType<LifeAlloy>(), 50);
-        recipe.AddIngredient(ModContent.ItemType<GalacticaSingularity>(), 20);
+        recipe.AddIngredient(ItemID.HallowedBar, 10);
+        recipe.AddIngredient(ItemID.LunarBar, 5);
+        recipe.AddIngredient(ModContent.ItemType<UelibloomBar>(), 5);
+        recipe.AddIngredient(ModContent.ItemType<AstralBar>(), 5);
+        recipe.AddIngredient(ModContent.ItemType<CoreofCalamity>());
+        recipe.AddIngredient(ModContent.ItemType<LifeAlloy>());
+        recipe.AddIngredient(ModContent.ItemType<GalacticaSingularity>());
         recipe.AddTile(TileID.TinkerersWorkbench);
         recipe.Register();
     }

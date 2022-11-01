@@ -1,7 +1,4 @@
-﻿using CalamityMod;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Potions;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -22,33 +19,26 @@ public class PotionEmblem : ModItem{
         Item.rare = ItemRarityID.LightRed;
     }
 
-    public override void UpdateEquip(Player player) {
+    public override void UpdateAccessory(Player player, bool hideVisual) {
         player.buffImmune[BuffID.PotionSickness] = true;
         player.buffImmune[BuffID.ManaSickness] = true;
         player.potionDelayTime = 0; //Hehe
         player.NoDebuff().PotionsEmblem = true;
     }
 
-    public override bool CanEquipAccessory(Player player, int slot, bool modded) {
-        return !player.NoDebuff().PotionsEmblem;
-    }
-
     public override void AddRecipes() {
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.AvengerEmblem);
-        recipe.AddIngredient(ModContent.ItemType<SupremeHealingPotion>(), 100);
-        recipe.AddIngredient(ItemID.SuperManaPotion, 100);
-        recipe.AddIngredient(ItemID.LunarBar, 100);
-        recipe.AddIngredient(ModContent.ItemType<CoreofCalamity>(), 10);
-        recipe.AddIngredient(ModContent.ItemType<LifeAlloy>(), 10);
-        recipe.AddIngredient(ModContent.ItemType<GalacticaSingularity>(), 20);
-        recipe.AddIngredient(ItemID.StoneBlock, 999);
-        recipe.AddIngredient(ItemID.DirtBlock, 999);
-        recipe.AddIngredient(ItemID.Wood, 999);
-        recipe.AddIngredient(ItemID.LifeCrystal, 50);
-        recipe.AddIngredient(ItemID.LifeFruit, 50);
-        recipe.AddIngredient(ItemID.HallowedBar, 50);
-        recipe.AddTile(TileID.TinkerersWorkbench);
+        recipe.AddIngredient(ItemID.LifeCrystal, 2);
+        recipe.AddIngredient(ItemID.CopperBar, 10);
+        recipe.AddIngredient(ItemID.HealingPotion);
+        recipe.AddTile(TileID.WorkBenches);
         recipe.Register();
+        
+        Recipe recipe2 = CreateRecipe();
+        recipe2.AddIngredient(ItemID.LifeCrystal, 2);
+        recipe2.AddIngredient(ItemID.TinBar, 10);
+        recipe2.AddIngredient(ItemID.HealingPotion);
+        recipe2.AddTile(TileID.WorkBenches);
+        recipe2.Register();
     }
 }
